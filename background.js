@@ -8,16 +8,19 @@
  */
 
 
-
-chrome.app.runtime.onLaunched.addListener(function() {
-  //chrome.tabs.create('index.html');
-  chrome.app.window.create('index.html', {
+//chrome.runtime.onLaunched.addListener(function() {
+chrome.action.onClicked.addListener(function() {
+  chrome.tabs.create({
+    url: 'index.html'
+  });
+  /**chrome.app.window.create('index.html', {
     bounds: {
       width: 500,
       height: 320
     }
-  });
+  });/** */
 });
+
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   chrome.desktopCapture.chooseDesktopMedia(
       ["screen", "window"],
